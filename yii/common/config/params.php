@@ -1,6 +1,10 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
-    'supportEmail' => 'support@example.com',
-    'user.passwordResetTokenExpire' => 3600,
+
+	"url" =>[
+
+			"admin" =>'http://www.iwebshop.com/G/Youxiu/yii/backend/web/index.php',
+			"home" => 'http://www.iwebshop.com/G/Youxiu/yii/frontend/web/index.php'
+	]
+     
 ];

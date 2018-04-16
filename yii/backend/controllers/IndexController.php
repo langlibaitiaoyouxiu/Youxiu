@@ -4,7 +4,8 @@ namespace backend\controllers;
 use Yii;
 use common\composers\BaseController;
 use common\models\LoginForm;
-
+use common\services\UrlServices;
+use backend\models\Admin;
 
 /**
  * Site controller
@@ -13,6 +14,7 @@ class IndexController extends BaseController
 {
 	public function actionIndex()
 	{
+		// var_dump(UrlServices::AdminUrl('index'));die;
 		return $this->render('index');
 
 	}
@@ -22,6 +24,30 @@ class IndexController extends BaseController
 		return $this->render('login');
 
 	}
+	public function actionLogin_do()
+	{
+	 	$admin = new Admin();
+
+	 	$name = $this->post('login_name');
+
+	 	$pwd = $this->post('login_pwd');
+
+	 	$a= $this->login('login_name',$name,$admin,$pwd);
+	 	if($a=="成功")
+	 	{
+
+	 		 BaseController::alertJump('登录成功','index');
+	 	}
+	 	else
+	 	{
+
+	 		BaseController::alertJump('登录失败','login');
+
+	 	}
+
+		
+	}
+
 	public function actionRelease()
 	{
 		return $this->render('release');

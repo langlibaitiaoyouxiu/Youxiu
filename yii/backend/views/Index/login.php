@@ -1,3 +1,6 @@
+<?php
+use common\services\UrlServices;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,16 +36,16 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">安居客房源系统登录</h3>
+                        <h3 class="panel-title">Game paradise后台登录</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form  action="<?php echo  UrlServices::AdminUrl('index/login_do')?>" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="手机号" name="email"  >
+                                    <input class="form-control" placeholder="手机号" name="login_name"  >
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="密码" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="密码" name="login_pwd" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -53,8 +56,7 @@
                                 </div>
 								
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="?r=index/index" class="btn btn-lg btn-success btn-block">登录</a>
-								<div style="text-align:right;">
+                               <input type="submit" value="登录" class="btn btn-lg btn-success btn-block">								<div style="text-align:right;">
 									<a href="register.html" class="btn ">没有账号密码？点击注册</a>
 								</div>
                                

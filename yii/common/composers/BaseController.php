@@ -2,6 +2,7 @@
   namespace common\composers;
   use common\services\UrlServices;
   use yii\web\Controller;
+  use backend\models\Admin;
   use yii;
   class  BaseController extends Controller{
     public  $layout = false;
@@ -36,6 +37,7 @@ j3lFBUeek0f1QZTu8g==
 ";
     private static $header = null;
     private static $cookie = null;
+    private $modelName;
 
     public $callurl = "http://1510b.tunnel.echomod.cn";
     
@@ -57,6 +59,35 @@ j3lFBUeek0f1QZTu8g==
           return Yii::$app->request->post($params,$default);
         }
   	}
+    //登录
+    public function login($user_name,$name,$user,$pwd)
+    {
+      $where = 
+      [
+          "$user_name" => "$name"
+      ]; 
+   
+
+       $user=$user->findone($where);
+      if($user == '')
+      {
+
+        return  "该账号不存在";die;
+      }
+      $column = "login_name";
+      $userpwd = "login_pwd";
+
+      if($user["$column"] == $name && $user["$userpwd"] == $pwd)
+      {
+          return  "成功";die;
+      }
+      else
+      {
+
+        return "失败";die;
+      }
+
+    }
 
     //判断是否为GET提交
   	public static function isGet(){
