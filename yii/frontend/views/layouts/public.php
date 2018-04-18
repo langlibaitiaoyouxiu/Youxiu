@@ -29,6 +29,7 @@ use common\services\UrlServices;
 <base href="http://www.dailianzj.com/" />
 <link rel="stylesheet" type="text/css" href="data/cache/style_6_common.css?xa6" />
 <link rel="stylesheet" type="text/css" href="data/cache/style_6_forum_index.css?xa6" />
+<link rel="stylesheet" href="<?=UrlServices::HomeUrl('css/index.css')  ?>" />
 <script type="text/javascript">var STYLEID = '6', STATICURL = 'static/', IMGDIR = 'static/image/common', VERHASH = 'xa6', charset = 'gbk', discuz_uid = '0', cookiepre = 'XXCv_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|威望|,2|金钱|,3|贡献|,4|元宝|', defaultstyle = '', REPORTURL = 'aHR0cDovL3d3dy5kYWlsaWFuemouY29tLw==', SITEURL = 'http://www.dailianzj.com/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
 <script src="data/cache/common.js?xa6" type="text/javascript"></script>
 <meta name="application-name" content="Game Paradise" />
@@ -52,16 +53,16 @@ window.onerror = ResumeError;
 	<div id="append_parent"></div><div id="ajaxwaitid"></div>
 <div id="toptb" class="cl">
 <div class="wp">
-<div class="z"><a href="javascript:;"  onclick="setHomepage('http://www.dailianzj.com/');">设为首页</a><a href="http://www.dailianzj.com/"  onclick="addFavorite(this.href, '代练之家');return false;">收藏本站</a>                    </div>
+
 <div class="y">
 <a id="switchblind" href="javascript:;" onClick="toggleBlind(this)" title="开启辅助访问" class="switchblind">开启辅助访问</a>
 
 </div>
                 <div class="wic_login y">
-                    <a href="connect.php?mod=login&amp;op=init&amp;referer=index.php&amp;statfrom=login_simple" class="qqlogin"><img class="vm" src="static/image/common/qq_login.gif"></a>
-        <a href="member.php?mod=logging&amp;action=login">登录</a>
+        
+        <a href="<?=UrlServices::HomeUrl('login')  ?>">登录</a>
     <span class="pipe">|</span> 
-    <a href="member.php?mod=register">立即注册</a> 
+    <a href="<?=UrlServices::HomeUrl('register')  ?>">立即注册</a> 
                 </div>
 </div>
 </div>

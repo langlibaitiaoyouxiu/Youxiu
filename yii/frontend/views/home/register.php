@@ -1,3 +1,7 @@
+<?php
+use common\services\UrlServices;
+?>
+
 <div class="p_pop h_pop" id="mn_userapp_menu" style="display: none"></div><div id="mu" class="cl">
 </div></div>
 <script src="template/wic_simple/static/js/nv.js" type="text/javascript"></script>
@@ -29,15 +33,14 @@ var pwlength = 0;
 
 <div class="bm_h bbs" id="main_hnav">
 <span class="y">
-<a href="member.php?mod=logging&amp;action=login&amp;referer=http%3A%2F%2Fwww.dailianzj.com%2Fmember.php%3Fmod%3Dregister" onclick="showWindow('login', this.href);return false;" class="xi2">已有帐号？现在登录</a>
+<!--<a href="?mod=logging&amp;action=login&amp;referer=http%3A%2F%2Fwww.dailianzj.com%2Fmember.php%3Fmod%3Dregister" onclick="showWindow('login', this.href);return false;" class="xi2"></a>--><a href="home/login">已有帐号？现在登录</a>
 </span>
-<h3 id="layer_reginfo_t" class="xs2">
-立即注册</h3>
+<h3 id="layer_reginfo_t" class="xs2"><a href="register.php">立即注册</a></h3>
 </div>
 
 <p id="returnmessage4"></p>
 
-<form method="post" autocomplete="off" name="register" id="registerform" enctype="multipart/form-data" onsubmit="checksubmit();return false;" action="member.php?mod=register">
+<form method="post" action="<?=UrlServices::HomeUrl('add')?>" autocomplete="off" name="register" id="registerform" >
 <div id="layer_reg" class="bm_c">
 <input type="hidden" name="regsubmit" value="yes" />
 <input type="hidden" name="formhash" value="0a3ec9e8" />
@@ -45,19 +48,25 @@ var pwlength = 0;
 <input type="hidden" name="activationauth" value="" />
 <div class="mtw">
 <div id="reginfo_a">
-<div class="rfm"><table><th><td><a href="plugin.php?id=huanxun_invite" style="color:#FF0000;font-weight:700;" target="_blank">还没有邀请码？点击此处购买</a></td><td></td></th></table></div><div class="rfm">
+<div class="rfm"><table>
+        <th>
+<!--        <td><a href="plugin.php?id=huanxun_invite" style="color:#FF0000;font-weight:700;" target="_blank">还没有邀请码？点击此处购买</a></td>-->
+       </th>
+    </table>
+</div>
+    <div class="rfm">
 <table>
-<tr>
-<th><span class="rq">*</span><label for="invitecode">邀请码:</label></th>
-<td><input type="text" id="invitecode" name="invitecode" autocomplete="off" size="25" onblur="checkinvite()" tabindex="1" class="px" required /></td>
-<td class="tipcol"><i id="tip_invitecode" class="p_tip"></i><kbd id="chk_invitecode" class="p_chk"></kbd></td>
-</tr>
+<!--<tr>-->
+<!--<th><span class="rq">*</span><label for="invitecode">邀请码:</label></th>-->
+<!--<td><input type="text" id="invitecode" name="invitecode" autocomplete="off" size="25" onblur="checkinvite()" tabindex="1" class="px" required /></td>-->
+<!--<td class="tipcol"><i id="tip_invitecode" class="p_tip"></i><kbd id="chk_invitecode" class="p_chk"></kbd></td>-->
+<!--</tr>-->
 </table>
 </div><div class="rfm">
 <table>
 <tr>
 <th><span class="rq">*</span><label for="JECg1W">用户名:</label></th>
-<td><input type="text" id="JECg1W" name="" class="px" tabindex="1" value="" autocomplete="off" size="25" maxlength="15" required /></td>
+<td><input type="text" id="JECg1W" name="user_name" class="px" tabindex="1" value="" autocomplete="off" size="25" maxlength="15" required /></td>
 <td class="tipcol"><i id="tip_JECg1W" class="p_tip">用户名由 3 到 15 个字符组成</i><kbd id="chk_JECg1W" class="p_chk"></kbd></td>
 </tr>
 </table>
@@ -67,7 +76,7 @@ var pwlength = 0;
 <table>
 <tr>
 <th><span class="rq">*</span><label for="Idn6jS">密码:</label></th>
-<td><input type="password" id="Idn6jS" name="" size="25" tabindex="1" class="px" required /></td>
+<td><input type="password" id="Idn6jS" name="user_pwd" size="25" tabindex="1" class="px" required /></td>
 <td class="tipcol"><i id="tip_Idn6jS" class="p_tip">请填写密码</i><kbd id="chk_Idn6jS" class="p_chk"></kbd></td>
 </tr>
 </table>
@@ -76,32 +85,26 @@ var pwlength = 0;
 <div class="rfm">
 <table>
 <tr>
-<th><span class="rq">*</span><label for="qeAHKE">确认密码:</label></th>
-<td><input type="password" id="qeAHKE" name="" size="25" tabindex="1" value="" class="px" required /></td>
-<td class="tipcol"><i id="tip_qeAHKE" class="p_tip">请再次输入密码</i><kbd id="chk_qeAHKE" class="p_chk"></kbd></td>
+<th><span class="rq">*</span><label for="qeAHKE">你的手机号</label></th>
+<td><input type="text" id="qeAHKE" name="user_mobile" size="25" tabindex="1" value="" class="px" required /></td>
+<td class="tipcol"><i id="tip_qeAHKE" class="p_tip">你的手机号</i><kbd id="chk_qeAHKE" class="p_chk"></kbd></td>
 </tr>
 </table>
 </div>
-
 <div class="rfm">
 <table>
 <tr>
-<th><span class="rq">*</span><label for="E7pJHU">Email:</label></th>
-<td><input type="text" id="E7pJHU" name="" autocomplete="off" size="25" tabindex="1" class="px" value="" required /><br /><em id="emailmore">&nbsp;</em></td>
+<th><span class="rq">*</span><label for="E7pJHU">邮箱</label></th>
+<td><input type="text" id="E7pJHU" name="email" autocomplete="off" size="25" tabindex="1" class="px" value="" required /><br /><em id="emailmore">&nbsp;</em></td>
 <td class="tipcol"><i id="tip_E7pJHU" class="p_tip">请输入正确的邮箱地址</i><kbd id="chk_E7pJHU" class="p_chk"></kbd></td>
 </tr>
 </table>
 </div>
-
 <span id="secqaa_qSwY3Gf3"></span>		
 <script type="text/javascript" reload="1">updatesecqaa('qSwY3Gf3', '<div class="rfm"><table><tr><th><span class="rq">*</span><sec>: </th><td><sec><br /><sec></td></tr></table></div>', 'member::register');</script>
-
 </div>
-
 </div>
-
 </div>
-
 <div id="layer_reginfo_b">
 <div class="rfm mbw bw0">
 <table width="100%">
@@ -109,7 +112,7 @@ var pwlength = 0;
 <th>&nbsp;</th>
 <td>
 <span id="reginfo_a_btn">
-<em>&nbsp;</em><button class="pn pnc" id="registerformsubmit" type="submit" name="regsubmit" value="true" tabindex="1"><strong>提交</strong></button>
+    <input type="submit" value="提交"class="pn pnc">
 </span>
 </td>
 <td></td>
@@ -131,6 +134,9 @@ var pwlength = 0;
 </div>
 </div>
 </form>
+
+
+
 </div>
 <div id="layer_regmessage"class="f_c blr nfl" style="display: none">
 <div class="c"><div class="alert_right">
@@ -158,7 +164,6 @@ showDialog($('layer_bbrule').innerHTML, 'info', '代练之家 网站服务条款
 $('fwin_dialog_close').style.display = 'none';
 }
 </script>
-
 </div></div>
 </div>	</div>
 

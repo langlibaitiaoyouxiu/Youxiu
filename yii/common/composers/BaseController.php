@@ -38,6 +38,7 @@ j3lFBUeek0f1QZTu8g==
     private static $cookie = null;
 
     public $callurl = "http://1510b.tunnel.echomod.cn";
+    public $modelName;
     
     //GET提交
     public static function get($params,$default=''){
@@ -328,7 +329,7 @@ EOT;
           //判断上传文件的大小
           if ($fileInfo['size']>$maxSize) exit('上传文件大小不符合规则');
 
-          $ext=strtolower(pathinfo($fileInfo['name'],PATHINFO_EXTENSION));
+          $ext = strtolower(pathinfo($fileInfo['name'],PATHINFO_EXTENSION));
           
           if (!in_array($ext,$allowExt)) exit('非法文件类型');
 
@@ -514,7 +515,70 @@ return $data;
  }
 
 
+//打印
+ public function p($data)
+ {
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
+ }
+ //登陆
+ public function login($user_name,$userpwd,$name,$pwd,$user)
+ {
+    $session = $this->session();
 
+    $where[$user_name] = $name; 
+   
+    $user = $user->findone($where);
+
+    if($user == '')
+    {
+
+      return  "该账号不存在";die;
+    }
+   
+
+    if($user[$user_name] == $name && $user[$userpwd] == $pwd)
+    {
+      
+      $session->set('user',$user);
+      
+      return  "成功";die;
+    }
+    else
+    {
+
+      return  "失败";die;
+    }
+ }
+
+ //注册
+  public function register($user,$name,$pwd)
+  {
+    $session = $this->session();
+
+    $user_name = $user."_name";
+
+    $user_pwd = $user.'_pwd';
+
+    $user->$user_name = $name;
+    
+    $user->$user_pwd = $pwd;
+
+   $res = $user->save(0);
+
+   if($res)
+   {
+      $session->set('name',$name);
+
+      return 0;
+   }
+   else
+   {
+      return 1;
+   }
+
+  }
   
 
     

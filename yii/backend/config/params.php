@@ -1,4 +1,9 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
+   
+	"url" =>[
+
+			"admin" =>'http://gameadmin.net',
+			"home" => 'http://gameadmin.net'
+	]
 ];

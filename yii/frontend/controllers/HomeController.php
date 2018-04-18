@@ -6,6 +6,7 @@ use common\composers\BaseController;
 use common\models\LoginForm;
 
 
+
 /**
  * Site controller
  */
@@ -16,7 +17,7 @@ class HomeController extends BaseController
 	//首页
 	public function actionIndex()
 	{
-		
+
 		return $this->render('index');
 	}
 
@@ -30,7 +31,7 @@ class HomeController extends BaseController
 	//注册
 	public function actionRegister()
 	{
-
+		
 		return $this->render('register');
 	}
 
