@@ -61,6 +61,7 @@ class IndexController extends BaseController
 	 		BaseController::alertJump('登录失败','login');
 
 	 	}
+	 	
 
 	}
 	
