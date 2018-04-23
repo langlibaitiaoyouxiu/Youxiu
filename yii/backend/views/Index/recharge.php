@@ -1,20 +1,4 @@
 ﻿
-				<div class="main-content">
-					<div class="breadcrumbs" id="breadcrumbs">
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
-
-						<ul class="breadcrumb">
-							<li>
-								<i class="icon-home home-icon"></i>
-								<a href="#">首页</a>
-							</li>
-							<li class="active">账户管理</li>
-                            <li class="active">充值记录</li>
-						</ul><!-- .breadcrumb -->
-					</div>
-
 					<div class="page-content">
 
 

@@ -7,7 +7,7 @@ use common\models\LoginForm;
 use common\services\UrlServices;
 use backend\models\Admin;
 use app\models\Gamelist;
-
+use app\models\Log;
 /**
  * Site controller
  */
@@ -16,13 +16,17 @@ class IndexController extends BaseController
 	public  $layout = 'public';
 
 	/*验证权限*/
-	// public function beforeAction($index)
+	// public function beforeAction($action)
 	// {
 	// 	$session = $this->session();
-	// 	if($session['user'] == '')
+	// 	$res = $this->action->uniqueId;
+	// 	if($res == "index/index" && $session['user'] == '')
 	// 	{
+
 	// 		$this->alertJump('非法操作');
 	// 	}
+		
+		
 		
 	// }
 
@@ -30,7 +34,13 @@ class IndexController extends BaseController
 	//首页
 	public function actionIndex()
 	{
+			$session = $this->session();
+		$res = $this->action->uniqueId;
+		if($session['user'] == '')
+		{
 
+			$this->alertJump('非法操作');
+		}
 		return $this->render('index');
 
 	}
@@ -43,6 +53,11 @@ class IndexController extends BaseController
 	}
 	public function actionLogin_do()
 	{
+
+		$session = $this->session();
+
+		$log = new Log();
+
 	 	$admin = new Admin();
 
 	 	$name = $this->post('login_name');
@@ -50,126 +65,32 @@ class IndexController extends BaseController
 	 	$pwd = md5($this->post('login_pwd'));
 
 	 	$res = $this->login('login_name','login_pwd',$name,$pwd,$admin);
+
 	 	if($res == "成功")
 	 	{
 
+	 		 $log->date_time = time();
+	 		 $log->admin_id = $session['user']['admin_id'];
+	 		 $log->log_desc = "登陆";
+	 		 $log->save(0);
 	 		 BaseController::alertJump('登录成功','index');
 	 	}
 	 	else
 	 	{
 
+	 		 $log->date_time = time();
+	 		 $log->admin_id = $session['user']['admin_id'];
+	 		 $log->log_desc = "登陆失败";
+	 		 $log->save(0);
+
 	 		BaseController::alertJump('登录失败','login');
 
 	 	}
-	 	
 
 	}
 	
-	//游戏列表
-	public function actionGamelist()
-	{
-		
-		$data['data'] = (new Gamelist)->find()->all();
-		
-		return $this->render('game_list',$data);
 
-	}
-
-	//游戏添加
-	public function actionGameadd()
-	{
-		$gamelist = new Gamelist();
-		if($this->isPost())
-		{
-			$data = $this->post();
-			$data['mai_ming'] = $this->do_upload('mai_ming');
-			$data['code'] = $this->do_upload('code');
-			$gamelist->attributes = $data;
-			if($gamelist->save(0))
-			{
-				
-				$this->alertJump('添加成功','gamelist');
-			}
-			else
-			{
-				
-				$this->alertJump('添加失败','gamelist');
-			}
-		}
-		else
-		{
-
-			return $this->render('game_add');
-		}
-
-	}
-
-	//游戏删除
-	public function actionGamedel($id)
-	{
-		$where['game_id'] = $id;
-		
-		$res = (new Gamelist)->findone($where)->delete();
-		
-		if($res)
-		{
-			
-			$this->alertJump('删除成功','gamelist');
-		}
-		else
-		{
-
-			$this->alertJump('删除失败','gamelist');
-		}
-
-	}
-
-	//游戏修改
-	public function actionGamesave($id)
-	{
-		$gamelist = new Gamelist;
-		if($this->isPost())
-		{
-			$data = $this->post();
-			$where['game_id'] = $id;
-			$res = $gamelist->findone($where);
-			unset($res['game_id']);
-			
-
-			$res->attributes = $data;
-			
-			if($res->save(0))
-			{
-
-				$this->alertJump('修改成功','gamelist');
-			}
-			else
-
-				$this->alertJump('修改失败','gamelist');
-			{
-
-				$this->alertJump('修改成功','gamelist');
-			}
-		}
-		else
-		{
-
-			$where['game_id'] = $id;
-		
-			$res['user'] = $gamelist->findone($where);
-
-			return $this->render('game_save',$res);
-		}
-		
-
-	}
-
-	//用户列表
-	public function actionUserlist()
-	{
-		return $this->render('user_list');
-
-	}
+	
 
 	public function actionAddaccount()
 	{
@@ -177,12 +98,7 @@ class IndexController extends BaseController
 
 	}
 
-	//代练游戏添加
-	public function actionLeveinggameadd()
-	{
-		return $this->render('leveing_game_add');
-
-	}
+	
 	public function actionChange()
 	{
 		return $this->render('change');

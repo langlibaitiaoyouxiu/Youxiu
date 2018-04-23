@@ -145,3 +145,40 @@
 	height:30px;
 	border-radius: 3px;
 }
+.user_phone1 {
+	position: absolute;
+	top:78px;
+	left:103px;
+}
+.user_code {
+	position: absolute;
+	top:140px;
+	left:103px;
+}
+.user_prompt {
+	position: absolute;
+	top:190px;
+	color:#00F;
+	left:103px;
+}
+.user_prompt>a {
+	color: red;
+}
+
+.sure_change1 {
+	position: absolute;
+	left:158px;
+	top:240px;
+	width:82px;
+	height:30px;
+	border-radius: 3px;
+}
+.reset1 {
+	position: absolute;
+	left:334px;
+	top:240px;
+	width:82px;
+	height:30px;
+	border-radius: 3px;
+}
+

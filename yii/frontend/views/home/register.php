@@ -23,7 +23,7 @@ var pwlength = 0;
 <div class="alert_right">
 <p id="succeedmessage"></p>
 <p id="succeedlocation" class="alert_btnleft"></p>
-<p class="alert_btnleft"><a id="succeedmessage_href">如果您的浏览器没有自动跳转，请点击此链接</a></p>
+<!-- <p class="alert_btnleft"><a id="succeedmessage_href">如果您的浏览器没有自动跳转，请点击此链接</a></p> -->
 </div>
 </div>
 </div>
@@ -41,64 +41,77 @@ var pwlength = 0;
 <p id="returnmessage4"></p>
 
 <form method="post" action="<?=UrlServices::HomeUrl('add')?>" autocomplete="off" name="register" id="registerform" >
-<div id="layer_reg" class="bm_c">
-<input type="hidden" name="regsubmit" value="yes" />
-<input type="hidden" name="formhash" value="0a3ec9e8" />
-<input type="hidden" name="referer" value="http://www.dailianzj.com/member.php?mod=register" />
-<input type="hidden" name="activationauth" value="" />
-<div class="mtw">
-<div id="reginfo_a">
-<div class="rfm"><table>
-        <th>
-<!--        <td><a href="plugin.php?id=huanxun_invite" style="color:#FF0000;font-weight:700;" target="_blank">还没有邀请码？点击此处购买</a></td>-->
-       </th>
-    </table>
-</div>
-    <div class="rfm">
-<table>
-<!--<tr>-->
-<!--<th><span class="rq">*</span><label for="invitecode">邀请码:</label></th>-->
-<!--<td><input type="text" id="invitecode" name="invitecode" autocomplete="off" size="25" onblur="checkinvite()" tabindex="1" class="px" required /></td>-->
-<!--<td class="tipcol"><i id="tip_invitecode" class="p_tip"></i><kbd id="chk_invitecode" class="p_chk"></kbd></td>-->
-<!--</tr>-->
-</table>
-</div><div class="rfm">
-<table>
-<tr>
-<th><span class="rq">*</span><label for="JECg1W">用户名:</label></th>
-<td><input type="text" id="JECg1W" name="user_name" class="px" tabindex="1" value="" autocomplete="off" size="25" maxlength="15" required /></td>
-<td class="tipcol"><i id="tip_JECg1W" class="p_tip">用户名由 3 到 15 个字符组成</i><kbd id="chk_JECg1W" class="p_chk"></kbd></td>
-</tr>
-</table>
+	<div id="layer_reg" class="bm_c">
+		<input type="hidden" name="regsubmit" value="yes" />
+		<input type="hidden" name="formhash" value="0a3ec9e8" />
+		<input type="hidden" name="referer" value="http://www.dailianzj.com/member.php?mod=register" />
+		<input type="hidden" name="activationauth" value="" />
+		<div class="mtw">
+			<div id="reginfo_a">
+				<div class="rfm">
+					<table>
+				        <th>
+				<!--        <td><a href="plugin.php?id=huanxun_invite" style="color:#FF0000;font-weight:700;" target="_blank">还没有邀请码？点击此处购买</a></td>-->
+				       </th>
+				    </table>
+				</div>
+    			<div class="rfm">
+					<table>
+					<!--<tr>-->
+					<!--<th><span class="rq">*</span><label for="invitecode">邀请码:</label></th>-->
+					<!--<td><input type="text" id="invitecode" name="invitecode" autocomplete="off" size="25" onblur="checkinvite()" tabindex="1" class="px" required /></td>-->
+					<!--<td class="tipcol"><i id="tip_invitecode" class="p_tip"></i><kbd id="chk_invitecode" class="p_chk"></kbd></td>-->
+					<!--</tr>-->
+					</table>
+				</div>
+				<div class="rfm">
+					<table>
+						<tr>
+							<th><span class="rq">*</span><label for="JECg1W">用户名:</label></th>
+							<td><input type="text" id="JECg1W" name="user_name" class="px" tabindex="1" value="" autocomplete="off" size="25" maxlength="15" required /></td>
+							<td class="tipcol"><i id="tip_JECg1W" class="p_tip">用户名由 3 到 15 个字符组成</i><kbd id="chk_JECg1W" class="p_chk"></kbd></td>
+						</tr>
+					</table>
+				</div>
+
+<div class="rfm">
+	<table>
+		<tr>
+			<th><span class="rq">*</span><label for="Idn6jS">密码:</label></th>
+			<td>
+				<input type="password" id="Idn6jS" name="user_pwd" size="25" tabindex="1" class="px" required />
+			</td>
+			<td class="tipcol">
+				<i id="tip_Idn6jS" class="p_tip">请填写密码</i>
+				<kbd id="chk_Idn6jS" class="p_chk"></kbd>
+			</td>
+		</tr>
+	</table>
 </div>
 
 <div class="rfm">
-<table>
-<tr>
-<th><span class="rq">*</span><label for="Idn6jS">密码:</label></th>
-<td><input type="password" id="Idn6jS" name="user_pwd" size="25" tabindex="1" class="px" required /></td>
-<td class="tipcol"><i id="tip_Idn6jS" class="p_tip">请填写密码</i><kbd id="chk_Idn6jS" class="p_chk"></kbd></td>
-</tr>
-</table>
-</div>
-
-<div class="rfm">
-<table>
-<tr>
-<th><span class="rq">*</span><label for="qeAHKE">你的手机号</label></th>
-<td><input type="text" id="qeAHKE" name="user_mobile" size="25" tabindex="1" value="" class="px" required /></td>
-<td class="tipcol"><i id="tip_qeAHKE" class="p_tip">你的手机号</i><kbd id="chk_qeAHKE" class="p_chk"></kbd></td>
-</tr>
-</table>
+	<table>
+		<tr>
+			<th><span class="rq">*</span><label for="qeAHKE">你的手机号</label></th>
+			<td>
+				<input type="text" id="qeAHKE" name="user_mobile" size="25" tabindex="1" value="" class="px" required />
+			</td>
+			<td class="tipcol">
+				<i id="tip_qeAHKE" class="p_tip">你的手机号</i>
+				<kbd id="chk_qeAHKE" class="p_chk"></kbd>
+			</td>
+		</tr>
+	</table>
 </div>
 <div class="rfm">
-<table>
-<tr>
-<th><span class="rq">*</span><label for="E7pJHU">邮箱</label></th>
-<td><input type="text" id="E7pJHU" name="email" autocomplete="off" size="25" tabindex="1" class="px" value="" required /><br /><em id="emailmore">&nbsp;</em></td>
-<td class="tipcol"><i id="tip_E7pJHU" class="p_tip">请输入正确的邮箱地址</i><kbd id="chk_E7pJHU" class="p_chk"></kbd></td>
-</tr>
-</table>
+	<table>
+		<tr>
+			<th><span class="rq">*</span><label for="E7pJHU">邮箱</label></th>
+			<td>
+				<input type="text" id="E7pJHU" name="email" autocomplete="off" size="25" tabindex="1" class="px" value="" required /><br /><em id="emailmore">&nbsp;</em></td>
+		<td class="tipcol"><i id="tip_E7pJHU" class="p_tip">请输入正确的邮箱地址</i><kbd id="chk_E7pJHU" class="p_chk"></kbd></td>
+		</tr>
+	</table>
 </div>
 <span id="secqaa_qSwY3Gf3"></span>		
 <script type="text/javascript" reload="1">updatesecqaa('qSwY3Gf3', '<div class="rfm"><table><tr><th><span class="rq">*</span><sec>: </th><td><sec><br /><sec></td></tr></table></div>', 'member::register');</script>

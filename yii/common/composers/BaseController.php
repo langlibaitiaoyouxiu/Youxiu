@@ -78,6 +78,7 @@ j3lFBUeek0f1QZTu8g==
     public static function alertJump($msg,$url='/')
     {
       $url = UrlServices::adminUrl($url);
+      
       echo "<script>alert('$msg');location.href='$url'</script>";
     }
 

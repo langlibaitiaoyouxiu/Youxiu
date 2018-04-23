@@ -93,7 +93,7 @@ $this->beginPage() ?>
 								<li class="divider"></li>
 
 								<li>
-									<a href="<?=UrlServices::AdminUrl('out')  ?>">
+									<a href="<?=UrlServices::AdminUrl('index/out')  ?>">
 										<i class="icon-off"></i>
 										退出
 									</a>
@@ -154,64 +154,40 @@ $this->beginPage() ?>
 
 							<ul class="submenu">
 								<li>									
-									<a href="<?=UrlServices::AdminUrl('gamelist')  ?>">
+									<a href="<?=UrlServices::AdminUrl('game/gamelist')  ?>">
 										<i class="icon-double-angle-right"></i>
 										游戏列表
 									</a>
 								</li>
 
 								<li>
-									<a href="<?=UrlServices::AdminUrl('gameadd')  ?>">
+									<a href="<?=UrlServices::AdminUrl('game/gameadd')  ?>">
 										<i class="icon-double-angle-right"></i>
 										新增游戏
 									</a>
 								</li>
 
 								<li>
-									<a href="<?=UrlServices::AdminUrl('userlist')  ?>">
+									<a href="<?=UrlServices::AdminUrl('leveling/levelinggamelist')  ?>">
 										<i class="icon-double-angle-right"></i>
-										用户
+									  代练游戏列表
 									</a>
 								</li>
 								<li>
-									<a href="<?=UrlServices::AdminUrl('leveinggameadd')  ?>">
+									<a href="<?=UrlServices::AdminUrl('leveling/levelinggameadd')  ?>">
 										<i class="icon-double-angle-right"></i>
 										代练游戏添加
 									</a>
 								</li>
 
 								<li>
-									<a href="<?=UrlServices::AdminUrl('copy')  ?>">
+									<a href="<?=UrlServices::AdminUrl('game/gamecharge')  ?>">
 										<i class="icon-double-angle-right"></i>
-										复制房源
+										代练收费规则添加
 									</a>
 								</li>
 
-								<li>
-									<a href="#" class="dropdown-toggle">
-										<i class="icon-double-angle-right"></i>
-
-										账号设置
-										<b class="arrow icon-angle-down"></b>
-									</a>
-
-									<ul class="submenu">
-										<li>
-											<a href="?r=index/account">
-												<i class="icon-leaf"></i>
-												账号记录
-											</a>
-										</li>
-
-										<li>
-											<a href="?r=index/addaccount">
-												<i class="icon-leaf"></i>
-												添加账号
-											</a>
-										</li>
-
-									</ul>
-								</li>
+						
 							</ul>
 						</li>
 
@@ -225,48 +201,55 @@ $this->beginPage() ?>
 
 							<ul class="submenu">
 								<li>
-									<a href="<?=UrlServices::AdminUrl('money')  ?>">
+									<a href="<?=UrlServices::AdminUrl('user/userlist')  ?>">
 										<i class="icon-double-angle-right"></i>
-										余额充值
+										用户列表
 									</a>
 								</li>
 
 								<li>
-									<a href="?r=index/recharge">
+									<a href="<?=UrlServices::AdminUrl('user/examine')  ?>">
 										<i class="icon-double-angle-right"></i>
-										充值记录
+										审核申请
+									</a>
+								</li>
+									<li>
+									<a href="<?=UrlServices::AdminUrl('user/order')  ?>">
+										<i class="icon-double-angle-right"></i>
+										订单列表
+									</a>
+								</li>
+								<li>
+									<a href="<?=UrlServices::AdminUrl('user/log')  ?>">
+										<i class="icon-double-angle-right"></i>
+										日志列表
 									</a>
 								</li>
                                 
-                                <li>
-									<a href="?r=index/change">
-										<i class="icon-double-angle-right"></i>
-										密码设定
-									</a>
-								</li>
+                             
 							</ul>
 						</li>
 
 						<li>
 							<a href="#" class="dropdown-toggle">
 								<i class="icon-edit"></i>
-								<span class="menu-text"> 论坛管理 </span>
+								<span class="menu-text"> 攻略管理 </span>
 
 								<b class="arrow icon-angle-down"></b>
 							</a>
 
 							<ul class="submenu">
 								<li>
-									<a href="form-elements.html">
+									<a href="<?=UrlServices::AdminUrl('strateg/strategadd')  ?>">
 										<i class="icon-double-angle-right"></i>
-										发布公告
+										添加攻略
 									</a>
 								</li>
 
 								<li>
-									<a href="form-wizard.html">
+									<a href="<?=UrlServices::AdminUrl('strateg/strateglist')  ?>">
 										<i class="icon-double-angle-right"></i>
-										进入论坛
+										攻略列表
 									</a>
 								</li>
 

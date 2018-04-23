@@ -10,6 +10,8 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use common\services\UrlServices;
+use common\composers\BaseController;
+$session = BaseController::session();
 
 ?>
 <?php $this->beginPage() ?>
@@ -18,7 +20,6 @@ use common\services\UrlServices;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <title>Game Paradise|中国网络游戏代练代打高端服务商!  </title>
-
 <meta name="keywords" content="游戏代练,网游代练,代练工作室,lol代练" />
 <meta name="description" content="Game Paradise论坛-提供游戏、网游、手游、代练、游戏代练工作室加盟等高端服务、是一个值得收藏的论坛! " />
 <meta name="generator" content="Discuz! X3.2" />
@@ -26,22 +27,25 @@ use common\services\UrlServices;
 <meta name="copyright" content="2001-2013 Comsenz Inc." />
 <meta name="MSSmartTagsPreventParsing" content="True" />
 <meta http-equiv="MSThemeCompatible" content="Yes" />
-<base href="http://www.dailianzj.com/" />
-<link rel="stylesheet" type="text/css" href="data/cache/style_6_common.css?xa6" />
-<link rel="stylesheet" type="text/css" href="data/cache/style_6_forum_index.css?xa6" />
-<link rel="stylesheet" href="<?=UrlServices::HomeUrl('css/index.css')  ?>" />
-<script type="text/javascript">var STYLEID = '6', STATICURL = 'static/', IMGDIR = 'static/image/common', VERHASH = 'xa6', charset = 'gbk', discuz_uid = '0', cookiepre = 'XXCv_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|威望|,2|金钱|,3|贡献|,4|元宝|', defaultstyle = '', REPORTURL = 'aHR0cDovL3d3dy5kYWlsaWFuemouY29tLw==', SITEURL = 'http://www.dailianzj.com/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';</script>
-<script src="data/cache/common.js?xa6" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="<?=UrlServices::HomeUrl('/css/paradise.css')  ?>" />
+<link rel="stylesheet" type="text/css" href="<?=UrlServices::HomeUrl('/css/paradise-1.css')  ?>" />
+<link rel="stylesheet" type="text/css" href="<?=UrlServices::HomeUrl('/css/paradise-2.css')  ?>" />
+<link rel="stylesheet" href="<?=UrlServices::HomeUrl('/css/index.css')  ?>" />
+
+<script type="text/javascript">
+var STYLEID = '6', STATICURL = 'static/', IMGDIR = 'static/image/common', VERHASH = 'xa6', charset = 'gbk', discuz_uid = '0', cookiepre = 'XXCv_2132_', cookiedomain = '', cookiepath = '/', showusercard = '1', attackevasive = '0', disallowfloat = 'newthread', creditnotice = '1|威望|,2|金钱|,3|贡献|,4|元宝|', defaultstyle = '', REPORTURL = 'aHR0cDovL3d3dy5kYWlsaWFuemouY29tLw==', SITEURL = 'http://www.dailianzj.com/', JSPATH = 'data/cache/', CSSPATH = 'data/cache/style_', DYNAMICURL = '';
+</script>
+<script src="<?=UrlServices::HomeUrl('/js/paradise.js')  ?>" type="text/javascript"></script>
 <meta name="application-name" content="Game Paradise" />
 <meta name="msapplication-tooltip" content="Game Paradise" />
-<meta name="msapplication-task" content="name=网站首页;action-uri=http://www.dailianzj.com;icon-uri=http://www.dailianzj.com/static/image/common/bbs.ico" />
-<script src="data/cache/forum.js?xa6" type="text/javascript"></script>
-<script src="data/cache/portal.js?xa6" type="text/javascript"></script>
-    <script src="template/wic_simple/static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+<script src="<?=UrlServices::HomeUrl('/js/paradise-1.js')  ?>" type="text/javascript"></script>
+<script src="<?=UrlServices::HomeUrl('/js/paradise-2.js')  ?>" type="text/javascript"></script>
+    <script src="<?=UrlServices::HomeUrl('/js/paradise-3.js')  ?>" type="text/javascript"></script>
     <script type="text/javascript">
         var jq=jQuery.noConflict();
     </script>
-    <script src="template/wic_simple/static/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script> 
+    <script src="<?=UrlServices::HomeUrl('/js/paradise-4.js')  ?>" type="text/javascript"></script> 
     <script language='javascript' type="text/javascript"> 
 function ResumeError() { 
 return true; 
@@ -58,12 +62,19 @@ window.onerror = ResumeError;
 <a id="switchblind" href="javascript:;" onClick="toggleBlind(this)" title="开启辅助访问" class="switchblind">开启辅助访问</a>
 
 </div>
-                <div class="wic_login y">
+    <?php if ($session['user']['user_name'] != '') { ?>
+        <div class="wic_login y">
+            <p>欢迎：<?=$session['user']['user_name'];?></p>
+            <span><a href="<?=UrlServices::HomeUrl('out')  ?>">退出</a></span>
+        </div>
         
-        <a href="<?=UrlServices::HomeUrl('login')  ?>">登录</a>
-    <span class="pipe">|</span> 
-    <a href="<?=UrlServices::HomeUrl('register')  ?>">立即注册</a> 
-                </div>
+    <?php }else{?>
+        <div class="wic_login y">
+            <a href="<?=UrlServices::HomeUrl('login')  ?>">登录</a>
+            <span class="pipe">|</span> 
+            <a href="<?=UrlServices::HomeUrl('register')  ?>">立即注册</a> 
+        </div>
+    <?php } ?>
 </div>
 </div>
 
@@ -150,7 +161,7 @@ initSearchmenu('scbar', '');
    <script type="text/javascript">var cookieLogin = Ajax("TEXT");cookieLogin.get("connect.php?mod=check&op=cookie", function() {});</script>
 
 <script type="text/javascript">(function(){var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = "http://znsv.baidu.com/customer_search/api/js?sid=16828058538646233243" + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000) + '&callback=znForDz';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
-<script src="source/plugin/baidusubmit/template/jquery-1.8.3.min.js"></script>
+<script src="<?=UrlServices::HomeUrl('/js/paradise-5.js')  ?>"></script>
 <script type="text/javascript">
 var bdjq = jQuery.noConflict(true);
 
@@ -205,7 +216,8 @@ function znForDz(siteConfig){
     	<div class="wp">
             <div id="flk" class="y">
                 <p>
-                                        <a href="http://www.dailianzj.com/forum.php?mod=misc&action=showdarkroom" >小黑屋</a><span class="pipe">|</span><a href="http://www.dailianzj.com/forum.php?mobile=yes" >手机版</a><span class="pipe">|</span>                            <strong><a href="http://www.dailianzj.com/" target="_blank">Game Paradise</a></strong>
+                                     
+                                     <span class="pipe">|</span><span class="pipe">|</span>                            <strong>Game Paradise</strong>
                     ( <a href="http://www.miitbeian.gov.cn/" target="_blank">辽ICP备17002186号-1</a> )                                        <script>
 var _hmt = _hmt || [];
 (function() {
@@ -224,7 +236,7 @@ var _hmt = _hmt || [];
             </div>
             <div id="frt">
                 <p>Powered by <strong><a href="http://www.discuz.net" target="_blank">Discuz!</a></strong> <em>X3.2</em></p>
-                <p class="xs0">&copy; 2013-2017 <a href="http://www.dailianzj.com" target="_blank">Game Paradise|中国网络游戏代练代打高端服务商!</a></p>
+                <p class="xs0">&copy; 2013-2017 <a href="<?=UrlServices::HomeUrl('index') ?>" target="_blank">Game Paradise|中国网络游戏代练代打高端服务商!</a></p>
             </div>
                                 </div>
 </div>
